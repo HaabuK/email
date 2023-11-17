@@ -1,0 +1,17 @@
+on: [push]
+jobs:
+  mail-on-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: dawidd/action-send-mail@v3
+        username: ${{secrets.MAIL_USERNAME}}
+        password: ${{secrets.MAIL_PASSWORD}}
+
+        subject: kERROR
+        body: KEEGI PUSHIS SU REPOSSE ${{github.repository}}
+        KES? ${{github.event.pusher.name}}
+        MIKS? ${{github.event.head_commit.message}}
+        to: karl.h.haabu@gmail.com
+        from: Github actions
+
