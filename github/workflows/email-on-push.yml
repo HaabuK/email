@@ -5,8 +5,12 @@ jobs:
     steps:
       - name: Check out repository code
         uses: dawidd/action-send-mail@v3
-        username: ${{secrets.MAIL_USERNAME}}
-        password: ${{secrets.MAIL_PASSWORD}}
+
+        with:
+          server_address: smtp.gmail.com
+          server_port:465
+          username: ${{secrets.MAIL_USERNAME}}
+          password: ${{secrets.MAIL_PASSWORD}}
 
         subject: kERROR
         body: KEEGI PUSHIS SU REPOSSE ${{github.repository}}
