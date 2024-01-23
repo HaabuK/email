@@ -7,7 +7,7 @@ on:
       - main
 
   jobs:
-    mail-on-push:
+    send-mail:
       runs-on: ubuntu-latest
       steps:
          - name: Checkout the repository
@@ -15,7 +15,7 @@ on:
 
         - name: Send Email on Push
           uses: dawidd6/action-send-mail@v3
-          
+
 
           with:
             server_address: smtp.gmail.com
