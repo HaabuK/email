@@ -14,7 +14,8 @@ on:
         uses: actions/checkout@v2
 
         - name: Send Email on Push
-          uses: dawidd6/action-send-mail@v1
+          uses: dawidd6/action-send-mail@v3
+          
 
           with:
             server_address: smtp.gmail.com
