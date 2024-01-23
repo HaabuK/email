@@ -20,11 +20,11 @@ jobs:
           server_port: 465
           username: ${{secrets.MAIL_USERNAME}}
           password: ${{secrets.MAIL_PASSWORD}}
-          to: karl.h.haabu@gmail.com
+          to: jyri.vaitmaa@tthk.ee
           from: karl.h.haabu@gmail.com
-          subject: kERROR
+          subject: Github repo push email
           body: |
-            KEEGI PUSHIS SU REPOSSE ${{github.repository}}
+            KEEGI PUSHIS REPOSSE ${{github.repository}}
             KES? ${{github.event.pusher.name}}
             MIKS? ${{github.event.head_commit.message}}
 
