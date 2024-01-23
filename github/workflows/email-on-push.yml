@@ -1,21 +1,31 @@
-on: [push]
-jobs:
-  mail-on-push:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository code
-        uses: dawidd/action-send-mail@v3
 
-        with:
-          server_address: smtp.gmail.com
-          server_port: 465
-          username: ${{secrets.MAIL_USERNAME}}
-          password: ${{secrets.MAIL_PASSWORD}}
+name: e-Mail when pushed
 
-        subject: kERROR
-        body: KEEGI PUSHIS SU REPOSSE ${{github.repository}}
-        KES? ${{github.event.pusher.name}}
-        MIKS? ${{github.event.head_commit.message}}
-        to: karl.h.haabu@gmail.com
-        from: Github actions
+on:
+  push:
+    branches:
+      - main
+
+  jobs:
+    mail-on-push:
+      runs-on: ubuntu-latest
+      steps:
+         - name: Checkout the repository
+        uses: actions/checkout@v2
+
+        - name: Send Email on Push
+          uses: dawidd6/action-send-mail@v1
+
+          with:
+            server_address: smtp.gmail.com
+            server_port: 465
+            username: ${{secrets.MAIL_USERNAME}}
+            password: ${{secrets.MAIL_PASSWORD}}
+            to: karl.h.haabu@gmail.com
+            from: karl.h.haabu@gmail.com
+            subject: kERROR
+            body: |
+              KEEGI PUSHIS SU REPOSSE ${{github.repository}}
+              KES? ${{github.event.pusher.name}}
+              MIKS? ${{github.event.head_commit.message}}
 
